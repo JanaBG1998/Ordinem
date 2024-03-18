@@ -1,0 +1,27 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - Flaskr</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<nav>
+  <div id="header">
+    <h1>Ordinem</h1>
+    {% if loggedIn %}
+      <div id="user">
+        <img id="user-icon" src="../static/assets/solid/circle-user.svg"/>
+      </div>
+    {% else %}
+      <div id="login-container">
+        <a id="login">Log In</a>
+        <a id="register">Sign Up</a>
+      </div>
+    {% endif %}
+  </div>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>
