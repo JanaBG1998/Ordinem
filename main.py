@@ -9,8 +9,17 @@ app = Flask(__name__)
 def main():
     return render_template("base.html", loggedIn=False)
 
-def printDb():
-    cursor.execute("SELECT * FROM example")
+@app.route("/register")
+def register():
+    return render_template("signup.html")
+
+
+@app.route("/login")
+def login():
+    return render_template("signin.html")
+
+def printDb(db):
+    cursor.execute("SELECT * FROM ?", db)
     rows = cursor.fetchall()
 
     for row in rows:
@@ -19,6 +28,7 @@ def printDb():
 
 if __name__ == '__main__':
     pass
+    app.run(debug=True)
 
 
 

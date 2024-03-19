@@ -1,0 +1,33 @@
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
+</head>
+{% extends "base.html" %}
+{% block content %}
+<section class="signup h-75 d-flex justify-content-center align-items-center">
+<div class="container rounded w-50 p-4 border shadow-sm rounded d-flex flex-column justify-content-center align-items-center">
+<div class="signup-content">
+<div class="signup-form text-center">
+<h2 class="form-title">Join Us</h2>
+    <p class="fw-light text-break">Manage your inventory easily with Ordinem and never get lost again :-)</p>
+<form method="POST" class="register-form d-flex flex-column justify-content-center align-items-center" id="register-form">
+<div class="form-group m-4">
+<label for="name" class="mx-1"><img src="../static/assets/solid/user.svg" width="15px"></label>
+<input type="text" name="name" id="name" class="p-1 border-0 border-bottom" placeholder="Your Name" />
+</div>
+<div class="form-group m-4">
+<label for="pass" class="mx-1"><img src="../static/assets/solid/lock.svg" width="15px"> </label>
+<input type="password" name="pass" id="pass" class="p-1 border-0 border-bottom" placeholder="Password" />
+</div>
+<div class="form-group m-4">
+<label for="re-pass" class="mx-1"><img src="../static/assets/solid/lock.svg" width="15px"></label>
+<input type="password" name="re_pass" id="re_pass" class="p-1 border-0 border-bottom" placeholder="Repeat your password" />
+</div>
+<div class="form-group form-button">
+<input type="submit" name="signup" id="signup" class="form-submit btn btn-primary" value="Register" />
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+{% endblock %}
