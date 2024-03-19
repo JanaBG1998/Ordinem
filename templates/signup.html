@@ -3,26 +3,29 @@
 </head>
 {% extends "base.html" %}
 {% block content %}
+{% for message in get_flashed_messages() %}
+            <div class="mx-4 my-2 alert alert-danger">{{ message }}</div>
+        {% endfor %}
 <section class="signup h-75 d-flex justify-content-center align-items-center">
 <div class="container rounded w-50 p-4 border shadow-sm rounded d-flex flex-column justify-content-center align-items-center">
 <div class="signup-content">
 <div class="signup-form text-center">
 <h2 class="form-title">Join Us</h2>
     <p class="fw-light text-break">Manage your inventory easily with Ordinem and never get lost again :-)</p>
-<form method="POST" class="register-form d-flex flex-column justify-content-center align-items-center" id="register-form">
+<form method="POST" class="form d-flex flex-column justify-content-center align-items-center" id="register-form">
 <div class="form-group m-4">
-<label for="name" class="mx-1"><img src="../static/assets/solid/user.svg" width="15px"></label>
-<input type="text" name="name" id="name" class="p-1 border-0 border-bottom" placeholder="Your Name" />
+<label for="username" class="mx-1"><img src="../static/assets/solid/user.svg" width="15px"></label>
+<input type="text" name="username" id="username" class="p-1 border-0 border-bottom" placeholder="Your Name" value="{{ request.form['username'] }}" />
 </div>
 <div class="form-group m-4">
-<label for="pass" class="mx-1"><img src="../static/assets/solid/lock.svg" width="15px"> </label>
-<input type="password" name="pass" id="pass" class="p-1 border-0 border-bottom" placeholder="Password" />
+<label for="password" class="mx-1"><img src="../static/assets/solid/lock.svg" width="15px"> </label>
+<input type="password" name="password" id="password" class="p-1 border-0 border-bottom" placeholder="Password" value="{{ request.form['password'] }}" />
 </div>
 <div class="form-group m-4">
-<label for="re-pass" class="mx-1"><img src="../static/assets/solid/lock.svg" width="15px"></label>
-<input type="password" name="re_pass" id="re_pass" class="p-1 border-0 border-bottom" placeholder="Repeat your password" />
+<label for="password-repeat" class="mx-1"><img src="../static/assets/solid/lock.svg" width="15px"></label>
+<input type="password" name="password-repeat" id="password-repeat" class="p-1 border-0 border-bottom" placeholder="Repeat your password" value="{{ request.form['password-repeat'] }}" />
 </div>
-<div class="form-group form-button">
+<div class="form-group form-button mt-3">
 <input type="submit" name="signup" id="signup" class="form-submit btn btn-primary" value="Register" />
 </div>
 </form>

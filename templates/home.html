@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <title>Inventory-Dashboard</title>
+</head>
+<body>
+<div class="d-flex flex-column justify-content-evenly">
+<div class="d-flex flex-row justify-content-around mt-5">
+    <div class="controlBubble border border-3 border-outline-secondary rounded-pill position-relative">
+        <p class="fs-4 fw-semibold text-secondary position-absolute top-50 start-50 translate-middle">Settings</p>
+    </div>
+    <div class="text-center">
+        <div class=""><img src="../static/assets/solid/circle-user.svg" width="100vw"></div>
+        <p class="fs-3 fw-semibold">Welcome Back!</p>
+    </div>
+    <div class="controlBubble border border-3 border-outline-secondary rounded-pill position-relative">
+        <p class="fs-4 fw-semibold text-secondary position-absolute top-50 start-50 translate-middle">Inventory</p>
+    </div>
+</div>
+<div class="d-flex flex-row justify-content-around mt-4">
+    <div class="dashBubble rounded-circle bg-warning text-center d-flex flex-column justify-content-evenly align-items-center">
+        <p class="fs-5" id="invCounter">xxx</p>
+        <p class="fs-5">Gegenstände</p>
+    </div>
+    <div class="dashBubble rounded-circle bg-warning text-center d-flex flex-column justify-content-evenly align-items-center">
+        <p class="fs-5" id="invMax">xxx</p>
+        <p class="fs-5 word-break">most in stock</p>
+    </div>
+    <div class="dashBubble rounded-circle bg-warning text-center d-flex flex-column justify-content-evenly align-items-center">
+        <p class="fs-5" id="invOrder">xxx</p>
+        <p class="fs-5 word-break px-2">needs attention</p>
+    </div>
+</div>
+<div class="d-flex flex-row justify-content-evenly mt-4">
+    <div class="dashBubble rounded-circle bg-warning text-center d-flex flex-column justify-content-evenly align-items-center">
+        <p class="fs-5" id="invMostUsed">xxx</p>
+        <p class="fs-5 word-break">most used</p>
+    </div>
+    <div class="dashBubble rounded-circle bg-warning text-center d-flex flex-column justify-content-evenly align-items-center">
+        <p class="fs-5" id="invLeastUsed">xxx</p>
+        <p class="fs-5 word-break">least used</p>
+    </div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>
+</html>
