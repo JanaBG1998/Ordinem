@@ -7,16 +7,10 @@
 <body>
 <nav class="navbar bg-secondary rounded p-2 m-1">
     <a href="/" class="text-white fs-4 px-3 text-decoration-none">Ordinem</a>
-    {% if loggedIn %}
-      <div id="user">
-        <img id="user-icon" src="../static/assets/solid/circle-user.svg"/>
-      </div>
-    {% else %}
       <div class="d-flex space-around px-2">
         <a class="btn btn-outline-light mx-1" href="{{ url_for('login') }}">Log In</a>
         <a class="btn btn-danger mx-1" href="{{ url_for('register') }}">Sign Up</a>
       </div>
-    {% endif %}
 </nav>
 <section class="content">
   {% block content %}
