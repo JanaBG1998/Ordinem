@@ -1,0 +1,13 @@
+.dashBubble {
+    width: 12rem;
+    height: 12rem;
+}
+
+.controlBubble {
+    width: 15rem;
+    height: 10rem;
+}
+
+.userControl {
+    display: none;
+}

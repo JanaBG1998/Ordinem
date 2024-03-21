@@ -1,0 +1,11 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    background-color: darkslategray;
+    height: 4rem;
+    width: 100vw;
+}
+
