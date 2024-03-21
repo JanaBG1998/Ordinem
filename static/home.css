@@ -6,6 +6,11 @@
 .controlBubble {
     width: 15rem;
     height: 10rem;
+    cursor: default;
+}
+
+.controlBubble:hover {
+    cursor: pointer;
 }
 
 .userControl {
