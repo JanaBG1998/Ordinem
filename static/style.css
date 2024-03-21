@@ -4,8 +4,20 @@ body {
 }
 
 #header {
-    background-color: darkslategray;
+    background: #3c31dd;
     height: 4rem;
     width: 100vw;
 }
 
+#header img {
+    cursor: default;
+}
+
+#header img:hover {
+    cursor: pointer;
+}
+
+.fillBlue {
+    background: #3c31dd;
+    height: 20rem;
+}
