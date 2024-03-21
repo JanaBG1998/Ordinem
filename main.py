@@ -3,7 +3,7 @@ from flask_login import *
 from flask_bcrypt import Bcrypt
 import sqlite3
 from flask_sqlalchemy import SQLAlchemy
-import inventory
+
 
 connection = sqlite3.connect("inv.db")
 
