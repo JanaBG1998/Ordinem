@@ -3,7 +3,7 @@ from flask_login import *
 from flask_bcrypt import Bcrypt
 import sqlite3
 from flask_sqlalchemy import SQLAlchemy
-import time
+import inventory
 
 connection = sqlite3.connect("inv.db")
 
@@ -113,12 +113,9 @@ def logout():
 def home():
     return render_template("home.html")
 
-
-
 if __name__ == '__main__':
     pass
     app.run(debug=False)
-
 
 
 
