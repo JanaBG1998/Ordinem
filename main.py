@@ -3,7 +3,8 @@ from flask_login import *
 from flask_bcrypt import Bcrypt
 import sqlite3
 from flask_sqlalchemy import SQLAlchemy
-import inventory
+from collections import Counter
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '6d33fa666274b19780e2e1f5a8a1cf56859a17c0a1dec6a2'
@@ -31,6 +32,39 @@ db.init_app(app)
 
 with app.app_context():
 	db.create_all()
+
+def getDashboardMetrics():
+    conn = sqlite3.connect('inventar.db')
+    cursor = conn.cursor()
+
+    # count items
+    cursor.execute("SELECT * FROM items")
+    items = cursor.fetchall()
+    counter = Counter(item[1] for item in items)
+
+    # find most common item
+    most_common_item = counter.most_common(1)[0][0]
+
+    # find item to order
+    cursor.execute("SELECT name FROM items ORDER BY amount ASC LIMIT 1")
+    item_with_lowest_amount = cursor.fetchone()[0]
+
+    # get rooms
+    cursor.execute("SELECT * FROM rooms")
+    rooms = cursor.fetchall()
+
+    # get current date
+    current_date = datetime.now().strftime('%Y-%m-%d')
+
+    two_weeks_later = (datetime.now() + timedelta(weeks=2)).strftime('%Y-%m-%d')
+
+    # SQL-Abfrage ausführen, um das Element mit dem nächsten Ablaufdatum innerhalb der nächsten 2 Wochen oder bereits überschritten abzurufen
+    cursor.execute(
+        "SELECT name, expiry_date FROM items WHERE expiry_date IS NOT NULL AND (expiry_date <= ? OR expiry_date <= ?) ORDER BY expiry_date ASC LIMIT 1",
+        (current_date, two_weeks_later))
+    item_nearest_expiration = cursor.fetchone()
+    return [len(items), most_common_item, item_with_lowest_amount, len(rooms), item_nearest_expiration]
+
 
 @app.route("/")
 def main():
@@ -108,7 +142,8 @@ def logout():
 @app.route("/home")
 @login_required
 def home():
-    return render_template("home.html")
+    metrics = getDashboardMetrics()
+    return render_template("home.html", items=metrics[0], most_common=metrics[1], lowest_amount=metrics[2], rooms=metrics[3], nearest_expiry=metrics[4])
 
 if __name__ == '__main__':
     pass
