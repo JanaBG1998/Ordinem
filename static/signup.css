@@ -1,0 +1,34 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    background: #3c31dd;
+    height: 4rem;
+    z-index: 2;
+}
+
+#header img {
+    cursor: default;
+}
+
+#header img:hover {
+    cursor: pointer;
+}
+
+.fillBlue {
+    background: #3c31dd;
+    height: 12rem;
+    z-index: 1;
+}
+
+#signinContainer, #signupContainer {
+    z-index: 10;
+    position: absolute;
+    top: 15vw;
+}
+
+#signupContainer {
+    top: 10vw;
+}

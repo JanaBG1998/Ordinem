@@ -6,9 +6,6 @@ import sqlite3
 from flask_sqlalchemy import SQLAlchemy
 
 
-
-
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '6d33fa666274b19780e2e1f5a8a1cf56859a17c0a1dec6a2'
 
