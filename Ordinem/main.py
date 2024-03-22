@@ -139,6 +139,12 @@ def logout():
     logout_user()
     return redirect("/")
 
+
+@app.route("/inventar")
+def inventar():
+
+    return render_template("inventar.html")
+
 @app.route("/home")
 @login_required
 def home():
@@ -148,8 +154,6 @@ def home():
 if __name__ == '__main__':
     pass
     app.run(debug=False)
-
-
 
 
 
