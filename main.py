@@ -110,6 +110,11 @@ def logout():
 def home():
     return render_template("home.html")
 
+
+@app.route("/profil")
+def profil():
+    return render_template("profil.html")
+
 if __name__ == '__main__':
     pass
     app.run(debug=False)

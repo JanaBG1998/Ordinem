@@ -1,0 +1,68 @@
+<!doctype html>
+<head>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
+  <title>Profil</title>
+</head>
+<body>
+<nav class="navbar pt-3 p-2" id="header">
+    <img src="../static/assets/logo.png" width="175rem" onclick="window.location.href='/'"/>
+      <div class="d-flex space-around px-2" onclick="window.location.href='/home'">
+        <a class="btn btn-outline-light mx-1">Back</a>
+      </div>
+</nav>
+<section id="signinHeader" class="">
+  <div class="fillBlue"></div>
+  <img src="../static/assets/wave.svg">
+</section>
+
+
+
+<section id="signupContainer" class="signup w-100 d-flex justify-content-center align-items-center">
+   
+  <!--
+  <div class="vh-100" style="background-color: #eee;">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-12 col-xl-4">
+-->
+      
+                      <div class="card" style="border-radius: 15px;">
+                <div class="card-body text-center">
+
+
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                        <img src="../static/assets/solid/circle-user.svg" width="100vw" id="userIcon">
+                    </div>
+                  <h4 class="mb-2">  {{ current_user.username }} </h4>
+                  <p class="text-muted mb-4">{{ current_user.business}}  <span class="mx-2">|</span> <a href="#!">{{current_user.mail}}</a></p>
+                
+                 
+                  <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                    <div>
+                      <p class="mb-2 h5">0</p>
+                      <p class="text-muted mb-0">Lists</p>
+                    </div>
+                    <div class="px-3">
+                      <p class="mb-2 h5">0</p>
+                      <p class="text-muted mb-0">Transactions</p>
+                    </div>
+                    <div>
+                      <p class="mb-2 h5">0</p>
+                      <p class="text-muted mb-0">Items</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>

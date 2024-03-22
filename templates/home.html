@@ -10,12 +10,12 @@
 <div class="d-flex flex-column justify-content-evenly">
 <div class="d-flex flex-row justify-content-around mt-5">
     <div class="controlBubble border border-3 border-outline-secondary rounded-pill pt-3 d-flex flex-column justify-content-center align-items-center" id="logoutContainer" onclick="window.location.href='/logout'">
-        <img src="../static/assets/solid/arrow-right-from-bracket.svg" width="65vw">
+       <img src="../static/assets/solid/arrow-right-from-bracket.svg" width="65vw">
         <p class="fs-5 fw-semibold text-secondary userControl">Log Out</p>
     </div>
-    <div class="text-center">
-        <div class="d-flex flex-column justify-content-center align-items-center">
-            <img src="../static/assets/solid/circle-user.svg" width="100vw" id="userIcon">
+    <div class="text-center" >
+        <div class="d-flex flex-column justify-content-center align-items-center" id="profil" onclick="window.location.href='/profil'">
+          <img src="../static/assets/solid/circle-user.svg" width="100vw" id="userIcon">
         </div>
         <p class="fs-3 fw-semibold">Welcome Back, {{ current_user.username }}!</p>
     </div>
@@ -56,6 +56,7 @@
       const invContainer = document.getElementById("invContainer");
       const logoutTexts = document.querySelectorAll(".userControl");
       const logoutContainer = document.getElementById("logoutContainer");
+      const profil = document.getElementById("profil");
 
       invContainer.addEventListener('mouseover', () => {
         logoutTexts.forEach(icon => {
@@ -80,6 +81,7 @@
             icon.style.display = 'none';
         });
     });
+
   </script>
 </body>
 </html>
