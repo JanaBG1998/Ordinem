@@ -6,7 +6,7 @@ body {
 #header {
     background: #3c31dd;
     height: 4rem;
-    width: 100vw;
+    z-index: 2;
 }
 
 #header img {
@@ -20,4 +20,16 @@ body {
 .fillBlue {
     background: #3c31dd;
     height: 20rem;
+    z-index: 1;
 }
+
+#signinHeader {
+    z-index: 1;
+}
+
+#landingContainer {
+    position: absolute;
+    top: 15vw;
+    z-index: 10;
+}
+
