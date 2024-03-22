@@ -1,7 +1,7 @@
  .fillBlue {
-            background-color: blue;
-            position: relative;
-            z-index: 1;
+            background: #3c31dd;
+    height: 12rem;
+    z-index: 1;
         }
         .fillBlue img {
             position: absolute;
@@ -13,21 +13,21 @@
         left: 500px;
 
         }
-        #test{
 
-        background-color:red;
-        }
         .container{
 
-        background-color: red;
+        background-color: green;
 
         }
 
         .card-text: {
-        background-color: red;
+        background-color: green;
         top: 400px;
         }
         .container{
         left: 400px;
 
+        }
+        .nav{
+        background-color: white;
         }

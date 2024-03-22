@@ -1,2 +1,6 @@
-.idea/
+.venv/
 inventar.db
+inv.db
+instance/
+
+

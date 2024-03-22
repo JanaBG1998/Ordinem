@@ -147,8 +147,8 @@ def home():
 
 @app.route("/inventar")
 def inventar():
-
-    return render_template("inventar.html")
+    metrics = getDashboardMetrics()
+    return render_template("inventar.html", items=metrics[0], most_common=metrics[1], lowest_amount=metrics[2], rooms=metrics[3], nearest_expiry=metrics[4])
 
 if __name__ == '__main__':
     pass
