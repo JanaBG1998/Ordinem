@@ -20,11 +20,16 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS items (
                     price REAL NOT NULL,
                     weight REAL NOT NULL,
                     color TEXT,
-                    expiry_date TEXT,
+                    expiry_date DATE,
                     room_id INTEGER,
                     FOREIGN KEY (room_id) REFERENCES rooms (id)
                 )''')
+'''SQLite does not have a storage class set aside for storing dates and/or times. Instead, the built-in Date And Time Functions of SQLite are capable of storing dates and times as TEXT, REAL, or INTEGER values:
 
+TEXT as ISO8601 strings ("YYYY-MM-DD HH:MM:SS.SSS").
+REAL as Julian day numbers, the number of days since noon in Greenwich on November 24, 4714 B.C. according to the proleptic Gregorian calendar.
+INTEGER as Unix Time, the number of seconds since 1970-01-01 00:00:00 UTC.
+Applications can choose to store dates and times in any of these formats and freely convert between formats using the built-in date and time functions.'''
 # Änderungen speichern
 conn.commit()
 
