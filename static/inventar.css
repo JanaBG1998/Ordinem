@@ -5,7 +5,29 @@
         }
         .fillBlue img {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 100px;
+            left: 100px;
             z-index: 0;
+        }
+        .card{
+        left: 500px;
+
+        }
+        #test{
+
+        background-color:red;
+        }
+        .container{
+
+        background-color: red;
+
+        }
+
+        .card-text: {
+        background-color: red;
+        top: 400px;
+        }
+        .container{
+        left: 400px;
+
         }
