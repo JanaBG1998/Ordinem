@@ -1,1 +1,11 @@
-.card
+ .fillBlue {
+            background-color: blue;
+            position: relative;
+            z-index: 1;
+        }
+        .fillBlue img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
