@@ -6,7 +6,7 @@ body {
 #header {
     background: #3c31dd;
     height: 4rem;
-    width: 100vw;
+    z-index: 2;
 }
 
 #header img {
@@ -20,4 +20,37 @@ body {
 .fillBlue {
     background: #3c31dd;
     height: 20rem;
+    z-index: 10;
 }
+
+
+#wave {
+    z-index: 5;
+}
+
+#waveBg {
+    z-index: -1;
+    position: absolute;
+    top: 50vh;
+    left: 0;
+}
+
+#waveBgBg {
+    z-index: -1;
+    position: absolute;
+    top: 50vh;
+    left: 0;
+}
+
+#landingContainer {
+    position: absolute;
+    top: 15vw;
+    z-index: 10;
+}
+
+.keyBenefitSvg {
+    color: #3c31dd;
+    position: relative;
+    top: 5px;
+}
+

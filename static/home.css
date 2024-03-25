@@ -1,6 +1,61 @@
 .dashBubble {
     width: 12rem;
     height: 12rem;
+    z-index: 1;
+}
+
+.dashBubble p {
+    z-index: 10;
+}
+
+
+#itemsBubbleContents {
+    border: 0;
+}
+
+#itemsBubble, #itemsBubbleBg, #itemsBubbleBgBg {
+    z-index: 3;
+    position: absolute;
+}
+
+#itemsBubbleBg {
+    z-index: 2;
+    transform: rotate(90deg);
+}
+
+#itemsBubbleBgBg {
+    z-index: 1;
+    transform: rotate(180deg);
+}
+
+#roomsBubble, #roomsBubbleBg, #roomsBubbleBgBg {
+    z-index: 3;
+    position: absolute;
+}
+
+#roomsBubbleBg {
+    z-index: 2;
+    transform: rotate(10deg);
+}
+
+#roomsBubbleBgBg {
+    z-index: 1;
+    transform: rotate(340deg);
+}
+
+#leastBubble, #leastBubbleBg, #leastBubbleBgBg {
+    z-index: 3;
+    position: absolute;
+}
+
+#leastBubbleBg {
+    z-index: 2;
+    transform: rotate(25deg);
+}
+
+#leastBubbleBgBg {
+    z-index: 1;
+    transform: rotate(120deg);
 }
 
 .controlBubble {

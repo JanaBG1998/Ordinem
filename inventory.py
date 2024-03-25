@@ -1,7 +1,7 @@
 import sqlite3
 
 # Verbindung zur Datenbank herstellen (falls nicht vorhanden, wird sie erstellt)
-conn = sqlite3.connect('inventar.db')
+conn = sqlite3.connect('instance/inventar.db')
 
 # Cursor-Objekt erstellen
 cursor = conn.cursor()

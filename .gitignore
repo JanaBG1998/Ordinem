@@ -1,3 +1,4 @@
-.idea/
+/.venv
+inventar.db
 instance
 __pycache__

@@ -9,7 +9,7 @@
 <body>
 <div class="d-flex flex-column justify-content-evenly">
 <div class="d-flex flex-row justify-content-around mt-5">
-    <div class="controlBubble border border-3 border-outline-secondary rounded-pill pt-3 d-flex flex-column justify-content-center align-items-center" id="logoutContainer" onclick="window.location.href='/logout'">
+    <div class="controlBubble rounded-pill pt-3 d-flex flex-column justify-content-center align-items-center" id="logoutContainer" onclick="window.location.href='/logout'">
         <img src="../static/assets/solid/arrow-right-from-bracket.svg" width="65vw">
         <p class="fs-5 fw-semibold text-secondary userControl">Log Out</p>
     </div>
@@ -19,33 +19,48 @@
         </div>
         <p class="fs-3 fw-semibold">Welcome Back, {{ current_user.username }}!</p>
     </div>
-    <div class="controlBubble border border-3 border-outline-secondary rounded-pill pt-3 d-flex flex-column justify-content-center align-items-center" id="invContainer">
+    <div class="controlBubble rounded-pill pt-3 d-flex flex-column justify-content-center align-items-center" id="invContainer">
         <img src="../static/assets/solid/box-open.svg" width="65vw">
         <p class="fs-5 fw-semibold text-secondary userControl">Inventory</p>
     </div>
 </div>
 <div class="d-flex flex-row justify-content-around mt-4">
-    <div class="dashBubble rounded-circle bg-warning text-center d-flex flex-column justify-content-evenly align-items-center">
-        <p class="fs-5" id="invCounter">xxx</p>
-        <p class="fs-5">Gegenstände</p>
+    <div id="itemsBubbleContents" class="dashBubble text-center text-white d-flex flex-column justify-content-evenly align-items-center">
+        <img id="itemsBubble" src="../static/assets/itemsBlob.svg" width="300rem"/>
+        <img id="itemsBubbleBg" src="../static/assets/itemsBlobBg.svg" width="300rem"/>
+        <img id="itemsBubbleBgBg" src="../static/assets/itemsBlobBgBg.svg" width="300rem"/>
+        <p class="fs-5 zindex-modal" id="invCounter">{{ items }}</p>
+        <p class="fs-5 fw-bold zindex-modal">items</p>
     </div>
-    <div class="dashBubble rounded-circle bg-warning text-center d-flex flex-column justify-content-evenly align-items-center">
-        <p class="fs-5" id="invMax">xxx</p>
-        <p class="fs-5 word-break">most in stock</p>
+    <div class="dashBubble rounded-circle text-center d-flex flex-column justify-content-evenly align-items-center">
+        <p class="fs-5" id="invMax">{{ most_common }}</p>
+        <p class="fs-5 word-break fw-bold">most in stock</p>
     </div>
-    <div class="dashBubble rounded-circle bg-warning text-center d-flex flex-column justify-content-evenly align-items-center">
-        <p class="fs-5" id="invOrder">xxx</p>
-        <p class="fs-5 word-break px-2">needs attention</p>
+    <div class="dashBubble rounded-circle text-center d-flex flex-column justify-content-evenly align-items-center">
+        <img id="leastBubble" src="../static/assets/leastBlob.svg" width="300rem"/>
+        <img id="leastBubbleBg" src="../static/assets/leastBlobBg.svg" width="300rem"/>
+        <img id="leastBubbleBgBg" src="../static/assets/leastBlobBgBg.svg" width="300rem"/>
+        <p class="fs-5" id="invOrder">{{ lowest_amount }}</p>
+        <p class="fs-5 word-break px-2 fw-bold">needs attention</p>
     </div>
 </div>
 <div class="d-flex flex-row justify-content-evenly mt-4">
-    <div class="dashBubble rounded-circle bg-warning text-center d-flex flex-column justify-content-evenly align-items-center">
-        <p class="fs-5" id="invMostUsed">xxx</p>
-        <p class="fs-5 word-break">most used</p>
+
+    <div class="dashBubble rounded-circle text-center text-white d-flex flex-column justify-content-evenly align-items-center">
+        <img id="roomsBubble" src="../static/assets/roomsBlob.svg" width="300rem"/>
+        <img id="roomsBubbleBg" src="../static/assets/roomsBlobBg.svg" width="300rem"/>
+        <img id="roomsBubbleBgBg" src="../static/assets/roomsBlobBgBg.svg" width="300rem"/>
+        <p class="fs-5" id="invMostUsed">{{ rooms }}</p>
+        <p class="fs-5 word-break fw-bold">rooms</p>
     </div>
-    <div class="dashBubble rounded-circle bg-warning text-center d-flex flex-column justify-content-evenly align-items-center">
-        <p class="fs-5" id="invLeastUsed">xxx</p>
-        <p class="fs-5 word-break">least used</p>
+    <div class="dashBubble rounded-circle text-center d-flex flex-column justify-content-evenly align-items-center">
+        {% if nearest_expiry %}
+        <p class="fs-5" id="invLeastUsed">{{ nearest_expiry[0] }}</p>
+        <p class="fs-6">{{ nearest_expiry[1] }}</p>
+        {% else %}
+        <p class="fs-5">nothing</p>
+        {% endif %}
+        <p class="fs-5 word-break fw-bold">expires soon</p>
     </div>
 </div>
 </div>
