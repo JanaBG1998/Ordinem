@@ -84,6 +84,7 @@ def loader_user(user_id):
 
 @app.route("/register", methods=('GET', 'POST'))
 def register():
+    import inventory # initialize inventory database
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -144,6 +145,7 @@ def login():
 
 
 @app.route("/logout")
+@login_required
 def logout():
     logout_user()
     return redirect("/")
@@ -157,7 +159,8 @@ def home():
                            rooms=metrics[3], nearest_expiry=metrics[4])
 
 
-@app.route("/profil")
+@app.route("/profile")
+@login_required
 def profil():
     return render_template("profil.html")
 
