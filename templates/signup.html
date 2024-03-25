@@ -12,9 +12,11 @@
 </nav>
     <section id="signinHeader" class="">
   <div class="fillBlue"></div>
-  <img src="../static/assets/wave.svg">
+  <img id="wave" src="../static/assets/wave.svg"/>
+  <img id="waveBg" src="../static/assets/waveBg.svg"/>
+  <img id="waveBgBg" src="../static/assets/waveBgBg.svg"/>
 </section>
-<section id="signupContainer" class="signup w-100 d-flex justify-content-center align-items-center">
+<section id="signupContainer" class="signup w-100 d-flex flex-column justify-content-center align-items-center">
 <div class="container rounded w-50 p-4 border bg-white shadow-sm rounded d-flex flex-column justify-content-center align-items-center">
 <div class="signup-content">
 <div class="signup-form text-center">
@@ -26,21 +28,24 @@
 <form action="#" method="POST" class="form d-flex flex-column justify-content-center align-items-center" id="register-form">
     <div class="form-group m-4">
     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-  <input type="radio" class="btn-check" name="btnradio" id="personal" autocomplete="off" checked>
-  <label class="btn btn-outline-primary" for="personal">Personal</label>
-
-  <input type="radio" class="btn-check" name="btnradio" id="business" autocomplete="off">
-  <label class="btn btn-outline-primary" for="business">Business</label>
+  <input type="radio" class="btn-check" name="btnradio" id="Personal" autocomplete="off" value="Personal" checked>
+  <label class="btn btn-outline-primary" for="Personal">Personal</label>
+  <input type="radio" class="btn-check" name="btnradio" id="Business" autocomplete="off" value="Business">
+  <label class="btn btn-outline-primary" for="Business">Business</label>
     </div>
     </div>
-    <div class="form-group m-4">
-<label for="username" class="mx-1"><img src="../static/assets/solid/user.svg" width="15px"></label>
-<input type="text" name="username" id="username" class="p-1 border-0 border-bottom" placeholder="Your Name" value="{{ request.form['username'] }}" />
-</div>
-    <div class="form-group m-4">
-<label for="mail" class="mx-1"><img src="../static/assets/solid/envelope.svg" width="15px"></label>
-<input type="email" name="mail" id="mail" class="p-1 border-0 border-bottom" placeholder="Your E-Mail" value="{{ request.form['mail'] }}" />
-</div>
+    <div class="d-flex justify-content-evenly align-items-center">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <div class="form-group m-4">
+                <label for="username" class="mx-1"><img src="../static/assets/solid/user.svg" width="15px"></label>
+                <input type="text" name="username" id="username" class="p-1 border-0 border-bottom" placeholder="Your Name" value="{{ request.form['username'] }}" />
+            </div>
+            <div class="form-group m-4">
+                <label for="mail" class="mx-1"><img src="../static/assets/solid/envelope.svg" width="15px"></label>
+                <input type="email" name="mail" id="mail" class="p-1 border-0 border-bottom" placeholder="Your E-Mail" value="{{ request.form['mail'] }}" />
+            </div>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
 <div class="form-group m-4">
 <label for="password" class="mx-1"><img src="../static/assets/solid/lock.svg" width="15px"> </label>
 <input type="password" name="password" id="password" class="p-1 border-0 border-bottom" placeholder="Password" value="{{ request.form['password'] }}" />
@@ -49,6 +54,9 @@
 <label for="password-repeat" class="mx-1"><img src="../static/assets/solid/lock.svg" width="15px"></label>
 <input type="password" name="password-repeat" id="password-repeat" class="p-1 border-0 border-bottom" placeholder="Repeat your password" value="{{ request.form['password-repeat'] }}" />
 </div>
+        </div>
+    </div>
+
     <div class="form-group form-button mt-3">
 <input type="submit" name="signup" id="signup" class="form-submit btn btn-primary" value="Register" />
     </div>

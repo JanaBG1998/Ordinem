@@ -20,16 +20,37 @@ body {
 .fillBlue {
     background: #3c31dd;
     height: 20rem;
-    z-index: 1;
+    z-index: 10;
 }
 
-#signinHeader {
-    z-index: 1;
+
+#wave {
+    z-index: 5;
+}
+
+#waveBg {
+    z-index: -1;
+    position: absolute;
+    top: 50vh;
+    left: 0;
+}
+
+#waveBgBg {
+    z-index: -1;
+    position: absolute;
+    top: 50vh;
+    left: 0;
 }
 
 #landingContainer {
     position: absolute;
     top: 15vw;
     z-index: 10;
+}
+
+.keyBenefitSvg {
+    color: #3c31dd;
+    position: relative;
+    top: 5px;
 }
 
