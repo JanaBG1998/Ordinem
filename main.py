@@ -40,7 +40,7 @@ with app.app_context():
 
 
 def getDashboardMetrics():
-    conn = sqlite3.connect('inventar.db')
+    conn = sqlite3.connect('instance/inventar.db')
     cursor = conn.cursor()
 
     # count items
@@ -84,7 +84,7 @@ def loader_user(user_id):
 
 @app.route("/register", methods=('GET', 'POST'))
 def register():
-    import inventory # initialize inventory database
+    import inventory
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
