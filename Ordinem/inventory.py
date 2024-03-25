@@ -68,3 +68,5 @@ show_inventory()
 
 # Datenbankverbindung schließen
 conn.close()
+
+query = "SELECT * FROM items WHERE items.room_id = rooms.id"

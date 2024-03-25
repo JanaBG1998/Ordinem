@@ -15,9 +15,9 @@
   <a href="/" class="text-white fs-4 px-3 text-decoration-none"></a>
   <div class="d-flex justify-content-between align-items-center flex-grow-3">
     <p class="m-0">
-      <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">{{ ro }}</a>
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">{{ rooms }}</button>
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">{{ items }}</button>
+      <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Orte</a>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Eigenschaften</button>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Anzahl</button>
     </p>
   </div>
 </nav>
@@ -92,11 +92,26 @@
   <div class="row justify-content-center">
     <div class="col-12">
       <div class="card">
-        <img src="..." class="card-img-top" alt="...">
+        <!--<img src="..." class="card-img-top" alt="...">-->
         <div class="card-body">
+          <!--
           <h5 class="card-title">Card title</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           <a href="#" class="btn btn-primary">Go somewhere</a>
+          -->
+          <ul>
+        {% for row in inventory %}
+
+    <h5 class="card-title">{{ row[1] }}</h5>
+    <p class="card-text">Amount: {{ row[2] }}</p>
+    <p class="card-text">Price: {{ row[3] }}</p>
+    <p class="card-text">Weight: {{ row[4] }}</p>
+    <p class="card-text">Color: {{ row[5] }}</p>
+    <p class="card-text">Expiry Date: {{ row[6] }}</p>
+    <p class="card-text">Room Name: {{ row[7] }}</p>
+
+{% endfor %}
+          </ul>
         </div>
       </div>
     </div>

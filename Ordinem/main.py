@@ -151,6 +151,39 @@ def home():
     metrics = getDashboardMetrics()
     return render_template("home.html", items=metrics[0], most_common=metrics[1], lowest_amount=metrics[2], rooms=metrics[3], nearest_expiry=metrics[4])
 
+@app.route('/')
+def index():
+    # Verbindung zur Datenbank herstellen
+    conn = sqlite3.connect('Inventar.db')
+    c = conn.cursor()
+
+    # Daten aus der Datenbank abrufen (angenommen, die Tabelle heißt 'Items' und hat die Spalten 'Raumname' und 'Item')
+    c.execute("SELECT DISTINCT Raumname FROM Items")  # Annahme: Raumnamen sind eindeutig
+    rooms = c.fetchall()
+
+    conn.close()
+
+    return render_template('index.html', rooms=rooms)
+
+@app.route('/items', methods=['POST'])
+def show_items():
+    selected_room = request.form['room']
+
+    # Verbindung zur Datenbank herstellen
+    conn = sqlite3.connect('Inventory.db')
+    c = conn.cursor()
+
+    # Items für den ausgewählten Raum abrufen
+    c.execute("SELECT Item FROM Items WHERE Raumname=?", (selected_room,))
+    items = c.fetchall()
+
+    conn.close()
+
+    return render_template('items.html', items=items)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
 if __name__ == '__main__':
     pass
     app.run(debug=False)
