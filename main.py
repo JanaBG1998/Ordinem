@@ -164,6 +164,9 @@ def home():
 def profil():
     return render_template("profil.html")
 
+@app.route("/inventory")
+def inventar():
+    return render_template("inventory.html")
 
 if __name__ == '__main__':
     pass
