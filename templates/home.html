@@ -7,62 +7,46 @@
     <title>Inventory-Dashboard</title>
 </head>
 <body>
-<div class="d-flex flex-column justify-content-evenly">
-<div class="d-flex flex-row justify-content-around mt-5">
-    <div class="controlBubble rounded-pill pt-3 d-flex flex-column justify-content-center align-items-center" id="logoutContainer" onclick="window.location.href='/logout'">
-        <img src="../static/assets/solid/arrow-right-from-bracket.svg" width="65vw">
-        <p class="fs-5 fw-semibold text-secondary userControl">Log Out</p>
+<nav class="navbar pt-3 p-2" id="header">
+    <img src="../static/assets/logo.png" width="175rem" onclick="window.location.href='/'"/>
+    <section id="homeheader" class="">
+</section>
+    <div onclick="window.location.href='/logout'">
+        <img src="../static/assets/solid/arrow-right-from-bracket.svg" width="20vw">
+        <i class="fa-regular fa-right-from-bracket"></i>
     </div>
-    <div class="text-center">
-        <div class="d-flex flex-column justify-content-center align-items-center">
-            <img src="../static/assets/solid/circle-user.svg" width="100vw" id="userIcon">
-        </div>
-        <p class="fs-3 fw-semibold">Welcome Back, {{ current_user.username }}!</p>
-    </div>
-    <div class="controlBubble rounded-pill pt-3 d-flex flex-column justify-content-center align-items-center" id="invContainer">
-        <img src="../static/assets/solid/box-open.svg" width="65vw">
-        <p class="fs-5 fw-semibold text-secondary userControl">Inventory</p>
-    </div>
-</div>
-<div class="d-flex flex-row justify-content-around mt-4">
-    <div id="itemsBubbleContents" class="dashBubble text-center text-white d-flex flex-column justify-content-evenly align-items-center">
-        <img id="itemsBubble" src="../static/assets/itemsBlob.svg" width="300rem"/>
-        <img id="itemsBubbleBg" src="../static/assets/itemsBlobBg.svg" width="300rem"/>
-        <img id="itemsBubbleBgBg" src="../static/assets/itemsBlobBgBg.svg" width="300rem"/>
-        <p class="fs-5 zindex-modal" id="invCounter">{{ items }}</p>
-        <p class="fs-5 fw-bold zindex-modal">items</p>
-    </div>
-    <div class="dashBubble rounded-circle text-center d-flex flex-column justify-content-evenly align-items-center">
-        <p class="fs-5" id="invMax">{{ most_common }}</p>
-        <p class="fs-5 word-break fw-bold">most in stock</p>
-    </div>
-    <div class="dashBubble rounded-circle text-center d-flex flex-column justify-content-evenly align-items-center">
-        <img id="leastBubble" src="../static/assets/leastBlob.svg" width="300rem"/>
-        <img id="leastBubbleBg" src="../static/assets/leastBlobBg.svg" width="300rem"/>
-        <img id="leastBubbleBgBg" src="../static/assets/leastBlobBgBg.svg" width="300rem"/>
-        <p class="fs-5" id="invOrder">{{ lowest_amount }}</p>
-        <p class="fs-5 word-break px-2 fw-bold">needs attention</p>
-    </div>
-</div>
-<div class="d-flex flex-row justify-content-evenly mt-4">
+</nav>
+<section id="signinHeader" class="">
+  <div class="fillBlue"></div>
+  <img id="wave" src="../static/assets/wave.svg"/>
+  <img id="waveBg" src="../static/assets/waveBg.svg"/>
+  <img id="waveBgBg" src="../static/assets/waveBgBg.svg"/>
+</section>
 
-    <div class="dashBubble rounded-circle text-center text-white d-flex flex-column justify-content-evenly align-items-center">
-        <img id="roomsBubble" src="../static/assets/roomsBlob.svg" width="300rem"/>
-        <img id="roomsBubbleBg" src="../static/assets/roomsBlobBg.svg" width="300rem"/>
-        <img id="roomsBubbleBgBg" src="../static/assets/roomsBlobBgBg.svg" width="300rem"/>
-        <p class="fs-5" id="invMostUsed">{{ rooms }}</p>
-        <p class="fs-5 word-break fw-bold">rooms</p>
+<div>
+
+
+<div class="profilecontainer">
+    <div class="profilepicture">
+        <div class="mouth"></div>
+        <div class="eye-section">
+            <div class="left-eye"></div>
+            <div class="right-eye"></div>
+        </div>
     </div>
-    <div class="dashBubble rounded-circle text-center d-flex flex-column justify-content-evenly align-items-center">
-        {% if nearest_expiry %}
-        <p class="fs-5" id="invLeastUsed">{{ nearest_expiry[0] }}</p>
-        <p class="fs-6">{{ nearest_expiry[1] }}</p>
-        {% else %}
-        <p class="fs-5">nothing</p>
-        {% endif %}
-        <p class="fs-5 word-break fw-bold">expires soon</p>
-    </div>
+    <p class="fs-6 fw-semibold">Welcome Back, {{ current_user.username }}!</p>
+
+
 </div>
+<div class="buttoncontainer d-flex flex-row justify-content-around align-items-center">
+    <div class="itembutton" id="itembutton" onclick="">Items</div>
+    <div class="roombutton" id="roombutton" onclick="">Rooms</div>
+</div>
+    <div class ="itemcontainer">
+        <div class="item" id="item1">{{ item }}</div>
+        <div class="item" id="item2">{{ item }}</div>
+        <div class="item" id="item3">{{ item }}</div>
+    </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
