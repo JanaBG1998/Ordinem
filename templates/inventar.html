@@ -8,24 +8,60 @@
     <meta name="viewport" content="width=device-width" />
   </head>
   <body>
-  <nav class="navbar bg-secondary rounded p-2 m-1">
-  <a href="/" class="text-white fs-4 px-3 text-decoration-none">Ordinem</a>
-  <div class="d-flex justify-content-between align-items-center flex-grow-1">
+  <nav class="navbar navbar-light rounded p-2 m-3" style="background-color: white; border: none;">
+   <img src="../static/assets/logo.png" width="175rem" onclick="window.location.href='/'"/>
+
+
+  <a href="/" class="text-white fs-4 px-3 text-decoration-none"></a>
+  <div class="d-flex justify-content-between align-items-center flex-grow-3">
     <p class="m-0">
-      <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
+      <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Orte</a>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Eigenschaften</button>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Anzahl</button>
     </p>
   </div>
 </nav>
 
+  <section>
+  <div class="fillBlue"></div>
+  <img src="../static/assets/wave.svg">
 
 
+  </div>
+</div>
+
+
+</section>
+<div class="d-flex justify-content-around align-items-center">
+      <div class="">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
-</nav>
+    </div>
+  </div>
+
+      <div class="">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+  </div>
+  </div>
+
 <section class="content">
-  {% block content %}
-  {% endblock %}
 </section>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
@@ -49,41 +85,33 @@
     </div>
   </div>
 </div>
-  <div class="row">
-  <div class="col-sm-4">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-    </div>
-  </div>
-</div>
+
+
+
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12">
       <div class="card">
-        <img src="..." class="card-img-top" alt="...">
+        <!--<img src="..." class="card-img-top" alt="...">-->
         <div class="card-body">
+          <!--
           <h5 class="card-title">Card title</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           <a href="#" class="btn btn-primary">Go somewhere</a>
+          -->
+          <ul>
+        {% for row in inventory %}
+
+    <h5 class="card-title">{{ row[1] }}</h5>
+    <p class="card-text">Amount: {{ row[2] }}</p>
+    <p class="card-text">Price: {{ row[3] }}</p>
+    <p class="card-text">Weight: {{ row[4] }}</p>
+    <p class="card-text">Color: {{ row[5] }}</p>
+    <p class="card-text">Expiry Date: {{ row[6] }}</p>
+    <p class="card-text">Room Name: {{ row[7] }}</p>
+
+{% endfor %}
+          </ul>
         </div>
       </div>
     </div>
