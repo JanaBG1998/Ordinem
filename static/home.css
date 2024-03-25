@@ -109,42 +109,17 @@
     width: 150px;
     background-color: #ffffff;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-}
-.eye-section {
-/*   added border just to see the where the eye section is. We'll remove it later. */
-
-  width: 90px;
-  height: 20px;
-  position: absolute;
-  left: 20%;
-  top: 20%;
-}
-.left-eye, .right-eye {
-  background-color: #000000;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  position: absolute;
-  top: 30%;
-
-}
-.right-eye {
-  right: 0px;
-}
-.mouth {
-  position: absolute;
-  top: 40%;
-  left: 15%;
-  width: 60%;
-  height: 20%;
-  border-radius: 50%;
-  border-bottom: 3px solid black;
 }
 .buttoncontainer {
-
     flex-direction: row;
-
+    top: 40%; /* Positionierung von oben um 50% der Höhe des Elternelements (container) */
+    position: absolute;
+    display: flex;
+    width: 100%;
 }
 
 .itembutton, .roombutton {
@@ -157,4 +132,16 @@
     align-items: center;
     border: 0.5px solid black;
     margin: 10px; /* Füge etwas Abstand zwischen den Buttons hinzu */
+}
+.item {
+    width: 20%;
+    height: 300px;
+    background-color: #e3e0f9;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+.itemcontainer {
+    top: 60%; /* Positionierung von oben um 50% der Höhe des Elternelements (container) */
+    position: absolute;
+    width: 100%;
 }

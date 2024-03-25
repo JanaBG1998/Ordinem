@@ -28,11 +28,7 @@
 
 <div class="profilecontainer">
     <div class="profilepicture">
-        <div class="mouth"></div>
-        <div class="eye-section">
-            <div class="left-eye"></div>
-            <div class="right-eye"></div>
-        </div>
+        <img src="../static/assets/face.png" alt="profilepicture">
     </div>
     <p class="fs-6 fw-semibold">Welcome Back, {{ current_user.username }}!</p>
 
@@ -42,7 +38,7 @@
     <div class="itembutton" id="itembutton" onclick="">Items</div>
     <div class="roombutton" id="roombutton" onclick="">Rooms</div>
 </div>
-    <div class ="itemcontainer">
+    <div class="itemcontainer d-flex flex-row justify-content-around align-items-center">
         <div class="item" id="item1">{{ item }}</div>
         <div class="item" id="item2">{{ item }}</div>
         <div class="item" id="item3">{{ item }}</div>
