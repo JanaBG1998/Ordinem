@@ -1,0 +1,37 @@
+#header {
+    background: #3c31dd;
+    height: 4rem;
+    z-index: 2;
+}
+
+.fillBlue {
+    background: #3c31dd;
+    height: 20rem;
+    z-index: 10;
+}
+
+
+#wave {
+    z-index: 5;
+}
+
+#waveBg {
+    z-index: -1;
+    position: absolute;
+    top: 50vh;
+    left: 0;
+}
+
+#waveBgBg {
+    z-index: -1;
+    position: absolute;
+    top: 50vh;
+    left: 0;
+}
+
+#editContainer {
+    position: absolute;
+    top: 17vh;
+    left: 5vw;
+    z-index: 5;
+}

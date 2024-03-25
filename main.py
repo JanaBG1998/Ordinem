@@ -71,6 +71,26 @@ def getDashboardMetrics():
     item_nearest_expiration = cursor.fetchone()
     return [len(items), most_common_item, item_with_lowest_amount, len(rooms), item_nearest_expiration]
 
+def getRooms():
+    conn = sqlite3.connect('instance/inventar.db')
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM rooms")
+    return cursor.fetchall()
+
+def getItems():
+    conn = sqlite3.connect('instance/inventar.db')
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT items.id, items.name AS item_name, items.amount, items.price, items.weight, items.color, items.expiry_date, rooms.name AS room_name FROM items INNER JOIN rooms ON items.room_id = rooms.id")
+    return cursor.fetchall()
+
+def getItem(id):
+    conn = sqlite3.connect('instance/inventar.db')
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT items.id, items.name AS item_name, items.amount, items.price, items.weight, items.color, items.expiry_date, rooms.name AS room_name FROM items INNER JOIN rooms ON items.room_id = rooms.id WHERE items.id = ?", id)
+    return cursor.fetchone()
 
 @app.route("/")
 def main():
@@ -165,8 +185,13 @@ def profil():
     return render_template("profil.html")
 
 @app.route("/inventory")
-def inventar():
-    return render_template("inventory.html")
+def inventory():
+    return render_template("inventory.html", rooms=getRooms(), items=getItems(), currency="€")
+
+
+@app.route("/edit/<id>")
+def editItem(id):
+    return render_template("edit.html", item=getItem(id), rooms=getRooms())
 
 if __name__ == '__main__':
     pass
