@@ -81,6 +81,7 @@
     <span class="visually-hidden">Next</span>
   </button>
 {% endif %}
+    </div>
 
 
   <table class="table">
@@ -109,7 +110,7 @@
       <td>{{ items[i][3] }} {{ currency }}</td>
       <td>{{ items[i][6] }}</td>
       <td><img src="../static/assets/barcode.png" width="200rem"> </td>
-      <td><button class="btn btn-outline-primary" onclick="window.location.href='/edit/{{i}}'">Edit</button></td>
+      <td><button class="btn btn-outline-primary" onclick="window.location.href='/edit/{{i+1}}'">Edit</button></td>
     </tr>
     {% endfor %}
     </tbody>

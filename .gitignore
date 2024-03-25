@@ -2,3 +2,4 @@
 inventar.db
 instance
 __pycache__
+.gitignore

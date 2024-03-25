@@ -89,7 +89,7 @@ def getItem(id):
     conn = sqlite3.connect('instance/inventar.db')
     cursor = conn.cursor()
 
-    cursor.execute("SELECT items.id, items.name AS item_name, items.amount, items.price, items.weight, items.color, items.expiry_date, rooms.name AS room_name FROM items INNER JOIN rooms ON items.room_id = rooms.id WHERE items.id = ?", id)
+    cursor.execute("SELECT items.id, items.name AS item_name, items.amount, items.price, items.weight, items.color, items.expiry_date, rooms.name AS room_name, items.room_id AS room_id FROM items INNER JOIN rooms ON items.room_id = rooms.id WHERE items.id = ?", id)
     return cursor.fetchone()
 
 @app.route("/")
@@ -189,9 +189,25 @@ def inventory():
     return render_template("inventory.html", rooms=getRooms(), items=getItems(), currency="€")
 
 
-@app.route("/edit/<id>")
+@app.route("/edit/<id>", methods=('GET', 'POST'))
 def editItem(id):
-    return render_template("edit.html", item=getItem(id), rooms=getRooms())
+    item = getItem(id)
+    if request.method == 'POST':
+        item = request.form['item']
+        room = request.form['room']
+        amount = request.form['amount']
+        price = request.form['price']
+        weight = request.form['weight']
+        color = request.form['color']
+        expiry = request.form['expiry']
+
+        conn = sqlite3.connect('instance/inventar.db')
+        cursor = conn.cursor()
+        cursor.execute("UPDATE items SET name = ?, amount = ?, price = ?, weight = ?, color = ?, expiry_date = ?, room_id = ? WHERE id = ?", (item, amount, price, weight, color, expiry, item[8], id))
+        conn.commit()
+        conn.close()
+
+    return render_template("edit.html", item=item, rooms=getRooms())
 
 if __name__ == '__main__':
     pass
