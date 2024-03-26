@@ -185,11 +185,13 @@ def profil():
     return render_template("profil.html", items=getItems())
 
 @app.route("/inventory")
+@login_required
 def inventory():
     return render_template("inventory.html", rooms=getRooms(), items=getItems(), currency="€")
 
 
 @app.route("/edit/<id>", methods=('GET', 'POST'))
+@login_required
 def editItem(id):
     item = getItem(id)
     if request.method == 'POST':
@@ -218,6 +220,7 @@ def editItem(id):
     return render_template("edit.html", item=item, rooms=getRooms())
 
 @app.route("/new", methods=('GET', 'POST'))
+@login_required
 def newItem():
     if request.method == 'POST':
         item = request.form['item']
@@ -242,6 +245,7 @@ def newItem():
     return render_template("new.html", rooms=getRooms())
 
 @app.route("/new_room", methods=('GET', 'POST'))
+@login_required
 def newRoom():
     if request.method == 'POST':
         room = request.form['room']
@@ -257,6 +261,7 @@ def newRoom():
     return render_template("new_room.html")
 
 @app.route('/settings')
+@login_required
 def settings():
     return render_template("settings.html")
 
