@@ -19,27 +19,24 @@ body {
 
 .fillBlue {
     background: #3c31dd;
-    height: 20rem;
-    z-index: 10;
+    height: 20vw; 
+    z-index: 5;
 }
-
 
 #wave {
     z-index: 5;
 }
 
-#waveBg {
-    z-index: -1;
+#waveBg,
+#waveBgBg {
+    z-index: -2;
     position: absolute;
-    top: 50vh;
+    top: 20vw; 
     left: 0;
 }
 
 #waveBgBg {
     z-index: -1;
-    position: absolute;
-    top: 50vh;
-    left: 0;
 }
 
 #signinContainer, #signupContainer {

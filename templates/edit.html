@@ -1,0 +1,101 @@
+<!doctype html>
+
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='edit.css') }}">
+  <title>{% block title %}{% endblock %} Ordinem</title>
+</head>
+
+<body>
+  <nav class="navbar pt-3 p-2" id="header">
+    <img src="../static/assets/logo.png" width="175rem" onclick="window.location.href='/'" />
+    <div class="d-flex space-around px-2">
+      <a class="btn btn-outline-light mx-1" href="{{ url_for('inventory') }}">Back</a>
+    </div>
+  </nav>
+  <section id="signinHeader" class="">
+    <div class="fillBlue"></div>
+    <img id="wave" src="../static/assets/wave.svg" />
+    <img id="waveBg" src="../static/assets/waveBg.svg" />
+    <img id="waveBgBg" src="../static/assets/waveBgBg.svg" />
+  </section>
+  <section id="editContainer" class="container rounded p-5 shadow-lg bg-white mb-5">
+    <form action="#" method="POST" class="form d-flex flex-column justify-content-center align-items-center"
+      id="register-form">
+      <h2 class="form-title">Edit item</h2>
+      <div class="d-flex justify-content-evenly align-items-center w-100 p-5">
+        <div class="d-flex flex-column justify-content-start align-items-start">
+          <div class="form-group m-4 d-flex">
+            <label for="rooms-datalist"><img src="../static/assets/solid/warehouse.svg" width="15px"></label>
+            <input type="text" class="form-control mx-2" placeholder="Location" list="list-rooms" id="rooms-datalist"
+              value="{{ item[7] }}">
+            <datalist id="list-rooms">
+              {% for i in range(rooms|length) %}
+              <option>{{ rooms[i][1] }}</option>
+              {% endfor %}
+            </datalist>
+          </div>
+          <div class="form-group m-4">
+            <label for="item" class="mx-1"><img src="../static/assets/solid/box.svg" width="15px"></label>
+            <input type="text" name="item" id="item" class="p-1 border-0 border-bottom" placeholder="Item name"
+              value="{{ item[1] }}" />
+          </div>
+          <div class="form-group m-4">
+            <label for="amount" class="mx-1"><img src="../static/assets/solid/2.svg" width="15px"></label>
+            <input type="text" name="amount" id="amount" class="p-1 border-0 border-bottom" placeholder="Quantity"
+              value="{{ item[2] }}" />
+          </div>
+          <div class="form-group m-4">
+            <label for="weight" class="mx-1"><img src="../static/assets/solid/weight-hanging.svg" width="15px"></label>
+            <input type="text" name="weight" id="weight" class="p-1 border-0 border-bottom" placeholder="Product weight"
+              value="{{ item[4] }}" />
+          </div>
+        </div>
+        <div class="d-flex flex-column justify-content-start align-items-start">
+          <div class="form-group m-4">
+            <label for="color" class="mx-1"><img src="../static/assets/solid/palette.svg" width="15px"></label>
+            <input type="text" name="color" id="color" class="p-1 border-0 border-bottom" placeholder="Color"
+              value="{{ item[5] }}" />
+          </div>
+          <div class="form-group m-4">
+            <label for="price" class="mx-1"><img src="../static/assets/solid/dollar-sign.svg" width="15px"></label>
+            <input type="text" name="price" id="price" class="p-1 border-0 border-bottom" placeholder="Price"
+              value="{{ item[3] }}" />
+          </div>
+          <div class="form-group m-4">
+            <label for="expiry" class="mx-1"><img src="../static/assets/solid/calendar-days.svg" width="15px"></label>
+            <input type="date" name="expiry" id="expiry" class="p-1 border-0 border-bottom" placeholder="Expiry"
+              value="{{ item[6] }}" />
+          </div>
+          <div class="form-group m-4">
+            <label for="code" class="mx-1"><img src="../static/assets/solid/barcode.svg" width="15px"></label>
+            <input type="file" name="code" id="code" class="p-1 border-0 border-bottom" placeholder="Barcode"
+              value="{{ request.form['code'] }}" />
+          </div>
+        </div>
+      </div>
+      <div class="form-group form-button mt-3">
+        <input type="submit" name="save" id="save" class="form-submit btn btn-primary" value="Save changes" />
+            </div>
+    </form>
+
+  </section>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', e => {
+      $('#rooms-datalist').autocomplete()
+    }, false);
+  </script>
+</body>

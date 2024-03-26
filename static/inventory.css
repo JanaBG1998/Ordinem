@@ -1,1 +1,58 @@
-.card
+nav {
+    background: #3c31dd;
+    height: 4rem;
+}
+
+#backgroundHeader {
+    position: relative;
+}
+
+.fillBlue {
+    background: #3c31dd;
+    height: 20rem;
+    z-index: 10;
+}
+
+
+#wave {
+    position: relative;
+    z-index: 5;
+}
+
+#waveBg {
+    z-index: -1;
+    position: relative;
+    top: -50vh;
+    left: 0;
+}
+
+#waveBgBg {
+    z-index: -1;
+    position: relative;
+    top: -91vh;
+    left: 0;
+}
+
+#invContainer {
+    position: absolute;
+    top: 17vh;
+    left: 5vw;
+    z-index: 5;
+}
+
+#roomContainer {
+    top: 15vh;
+    left: 0;
+    z-index: 5;
+}
+
+
+#roomCarousel {
+    left: 0;
+    z-index: 5;
+}
+
+#roomCarousel .card {
+    width: 15rem;
+    height: 5rem;
+}

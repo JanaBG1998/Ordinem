@@ -8,114 +8,120 @@
     <meta name="viewport" content="width=device-width" />
   </head>
   <body>
-  <nav class="navbar navbar-light rounded p-2 m-3" style="background-color: white; border: none;">
+  <nav class="navbar navbar-light p-2">
    <img src="../static/assets/logo.png" width="175rem" onclick="window.location.href='/'"/>
 
 
   <a href="/" class="text-white fs-4 px-3 text-decoration-none"></a>
   <div class="d-flex justify-content-between align-items-center flex-grow-3">
-    <p class="m-0">
-      <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Orte</a>
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Eigenschaften</button>
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Anzahl</button>
+    <p class="m-0 px-2">
+      <a class="btn btn-outline-light" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Orte</a>
+      <button class="btn btn-outline-light" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Eigenschaften</button>
+      <button class="btn btn-outline-light" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Anzahl</button>
     </p>
   </div>
 </nav>
 
-  <section>
+    <section id="backgroundHeader" class="inline-block">
   <div class="fillBlue"></div>
-  <img src="../static/assets/wave.svg">
+  <img id="wave" src="../static/assets/wave.svg"/>
+  <img id="waveBg" src="../static/assets/waveBg.svg"/>
+  <img id="waveBgBg" src="../static/assets/waveBgBg.svg"/>
+</section>
+  <div id="invContainer" class="container rounded bg-white shadow p-5">
+    <div id="roomCarousel" class="carousel carousel-dark slide inline-block" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      {% if rooms|length >= 3 %}
+      <div class="card-wrapper container-sm d-flex justify-content-around">
+        {% for i in range(3) %}
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title text-center">{{ rooms[i][1] }}</h5>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% if rooms|length >= 6 %}
+    <div class="carousel-item">
+      <div class="card-wrapper container-sm d-flex   justify-content-around">
+        {% for i in range(3, 6) %}
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title text-center">{{ rooms[i][1] }}</h5>
+            </div>
+          </div>
+        {% endfor %}
 
+    </div>
+    </div>
+    {% if rooms|length >= 9 %}
+    <div class="carousel-item">
+      <div class="card-wrapper container-sm d-flex  justify-content-around">
+        {% for i in range(6, 9) %}
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title text-center">{{ rooms[i][1] }}</h5>
+            </div>
+          </div>
+        {% endfor %}
 
+    </div>
   </div>
+    {% endif %}
+    {% endif %}
 </div>
-
-
-</section>
-<div class="d-flex justify-content-around align-items-center">
-      <div class="">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#roomCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#roomCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+{% endif %}
     </div>
-  </div>
 
-      <div class="">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-    </div>
-  </div>
 
-  <div class="">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-    </div>
-  </div>
-  </div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Location</th>
+      <th scope="col">Item</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Weight</th>
+      <th scope="col">Color</th>
+      <th scope="col">Price</th>
+      <th scope="col">Expiry</th>
+      <th scope="col">Code</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in range(items|length) %}
+    <tr>
+      <th scope="row">{{ items[i][0] }}</th>
+      <td>{{ items[i][7] }}</td>
+      <td>{{ items[i][1] }}</td>
+      <td>{{ items[i][2] }}</td>
+      <td>{{ items[i][4] }}</td>
+      <td>{{ items[i][5] }}</td>
+      <td>{{ items[i][3] }} {{ currency }}</td>
+      <td>{{ items[i][6] }}</td>
+      <td><img src="../static/assets/barcode.png" width="200rem"> </td>
+      <td><button class="btn btn-outline-primary" onclick="window.location.href='/edit/{{i+1}}'">Edit</button></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
 
-<section class="content">
-</section>
+
+
+
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-
-
-
-
-    <div class="collapse multi-collapse" id="multiCollapseExample1">
-      <div class="card card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-      </div>
-
-
-
-  <div class="row">
-    <div class="collapse multi-collapse" id="multiCollapseExample2">
-      <div class="card card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-12">
-      <div class="card">
-        <!--<img src="..." class="card-img-top" alt="...">-->
-        <div class="card-body">
-          <!--
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-          -->
-          <ul>
-        {% for row in inventory %}
-
-    <h5 class="card-title">{{ row[1] }}</h5>
-    <p class="card-text">Amount: {{ row[2] }}</p>
-    <p class="card-text">Price: {{ row[3] }}</p>
-    <p class="card-text">Weight: {{ row[4] }}</p>
-    <p class="card-text">Color: {{ row[5] }}</p>
-    <p class="card-text">Expiry Date: {{ row[6] }}</p>
-    <p class="card-text">Room Name: {{ row[7] }}</p>
-
-{% endfor %}
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
   </body>
 </html>
