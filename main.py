@@ -104,7 +104,6 @@ def loader_user(user_id):
 
 @app.route("/register", methods=('GET', 'POST'))
 def register():
-    import inventory
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
