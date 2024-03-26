@@ -1,103 +1,46 @@
-.dashBubble {
-    width: 12rem;
-    height: 12rem;
-    z-index: 1;
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
 
-.dashBubble p {
-    z-index: 10;
-}
-
-
-#itemsBubbleContents {
-    border: 0;
-}
-
-#itemsBubble, #itemsBubbleBg, #itemsBubbleBgBg {
-    z-index: 3;
-    position: absolute;
-}
-
-#itemsBubbleBg {
-    z-index: 2;
-    transform: rotate(90deg);
-}
-
-#itemsBubbleBgBg {
-    z-index: 1;
-    transform: rotate(180deg);
-}
-
-#roomsBubble, #roomsBubbleBg, #roomsBubbleBgBg {
-    z-index: 3;
-    position: absolute;
-}
-
-#roomsBubbleBg {
-    z-index: 2;
-    transform: rotate(10deg);
-}
-
-#roomsBubbleBgBg {
-    z-index: 1;
-    transform: rotate(340deg);
-}
-
-#leastBubble, #leastBubbleBg, #leastBubbleBgBg {
-    z-index: 3;
-    position: absolute;
-}
-
-#leastBubbleBg {
-    z-index: 2;
-    transform: rotate(25deg);
-}
-
-#leastBubbleBgBg {
-    z-index: 1;
-    transform: rotate(120deg);
-}
-
-.controlBubble {
-    width: 15rem;
-    height: 10rem;
-    cursor: default;
-}
-
-.controlBubble:hover {
-    cursor: pointer;
-}
-
-.userControl {
-    display: none;
-}
 .fillBlue {
     background: #3c31dd;
-    height: 20rem;
-    z-index: 10;
+    height: 20vw;
+    z-index: 5;
 }
+
 #wave {
     z-index: 5;
 }
 
-#waveBg {
-    z-index: -1;
+#waveBg,
+#waveBgBg {
+    z-index: -2;
     position: absolute;
-    top: 50vh;
+    top: 20vw;
     left: 0;
 }
 
 #waveBgBg {
     z-index: -1;
-    position: absolute;
-    top: 50vh;
-    left: 0;
 }
 #header {
     background: #3c31dd;
     height: 4rem;
     z-index: 2;
 }
+
+#header img {
+    cursor: default;
+}
+
+#header img:hover {
+    cursor: pointer;
+}
+
 .profilecontainer {
     top: 30%; /* Positionierung von oben um 50% der Höhe des Elternelements (container) */
     left: 50%; /* Positionierung von links um 50% der Breite des Elternelements (container) */
@@ -114,34 +57,19 @@
     align-items: center;
 
 }
-.buttoncontainer {
-    flex-direction: row;
-    top: 40%; /* Positionierung von oben um 50% der Höhe des Elternelements (container) */
+#dashContainer {
     position: absolute;
-    display: flex;
-    width: 100%;
+    top: 15vh;
+    z-index: 10;
+    width: 100vw;
 }
 
-.itembutton, .roombutton {
-    width: 120px;
-    height: 40px;
-    border-radius: 40px;
-    background-color: #ffffff;
-    text-align: center;
-    display: grid;
-    align-items: center;
-    border: 0.5px solid black;
-    margin: 10px; /* Füge etwas Abstand zwischen den Buttons hinzu */
+#profileContainer {
+    width: 9rem;
+    height: 9rem;
 }
-.item {
-    width: 20%;
-    height: 300px;
-    background-color: #e3e0f9;
-    border-radius: 20px;
-    border: 1px solid black;
-}
-.itemcontainer {
-    top: 60%; /* Positionierung von oben um 50% der Höhe des Elternelements (container) */
-    position: absolute;
-    width: 100%;
+
+#roomButton, #itemButton {
+    height: 4rem;
+    width: 8rem;
 }

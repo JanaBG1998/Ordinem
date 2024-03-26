@@ -4,6 +4,19 @@
     z-index: 2;
 }
 
+#header img {
+    cursor: default;
+}
+
+#header img:hover {
+    cursor: pointer;
+}
+
+form-title {
+  flex-grow: 1;
+  text-align: center;
+}
+
 .fillBlue {
     background: #3c31dd;
     height: 20rem;
@@ -29,9 +42,13 @@
     left: 0;
 }
 
-#editContainer {
+#editContainer, #newRoomContainer {
     position: absolute;
     top: 17vh;
     left: 5vw;
     z-index: 5;
+}
+
+#newRoomContainer {
+    left: 38vw;
 }

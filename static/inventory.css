@@ -3,6 +3,14 @@ nav {
     height: 4rem;
 }
 
+#header img {
+    cursor: default;
+}
+
+#header img:hover {
+    cursor: pointer;
+}
+
 #backgroundHeader {
     position: relative;
 }

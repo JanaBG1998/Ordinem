@@ -2,79 +2,86 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-      <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
     <title>Inventory-Dashboard</title>
 </head>
-<body>
+<body class="w-100 h-100">
 <nav class="navbar pt-3 p-2" id="header">
     <img src="../static/assets/logo.png" width="175rem" onclick="window.location.href='/'"/>
     <section id="homeheader" class="">
-</section>
-    <div onclick="window.location.href='/logout'">
-        <img src="../static/assets/solid/arrow-right-from-bracket.svg" width="20vw">
-        <i class="fa-regular fa-right-from-bracket"></i>
+    </section>
+    <div>
+        <button class="btn btn-outline-light p-2" onclick="window.location.href='/inventory'">Inventory</button>
+        <button class="btn btn-outline-light p-2" onclick="window.location.href='/profile'">Profile</button>
+        <button class="btn btn-outline-light p-2" onclick="window.location.href='/settings'">Settings</button>
+        <button class="btn btn-outline-light p-2" onclick="window.location.href='/logout'">Logout</button>
     </div>
 </nav>
 <section id="signinHeader" class="">
-  <div class="fillBlue"></div>
-  <img id="wave" src="../static/assets/wave.svg"/>
-  <img id="waveBg" src="../static/assets/waveBg.svg"/>
-  <img id="waveBgBg" src="../static/assets/waveBgBg.svg"/>
+    <div class="fillBlue"></div>
+    <img id="wave" src="../static/assets/wave.svg"/>
+    <img id="waveBg" src="../static/assets/waveBg.svg"/>
+    <img id="waveBgBg" src="../static/assets/waveBgBg.svg"/>
 </section>
 
-<div>
+
+<section id="dashContainer">
+
+        <div class="d-flex w-100 flex-column justify-content-center align-items-center mb-5">
+            <div id="profileContainer" class="bg-white rounded-circle d-flex justify-content-center align-items-center">
+                <img src="../static/assets/face.png" alt="profilepicture">
+            </div>
+            <p class="pt-2 fs-6 fw-semibold text-white text-center">Welcome Back, {{ current_user.username }}!</p>
+        </div>
+        <div class="d-flex w-100 h-100 flex-column justify-content-around align-items-center">
+            <div class="d-flex w-100 justify-content-evenly align-items-center my-4">
+                <div class="bg-white px-4 rounded shadow position-relative" id="itemButton" onclick="">
+                    <span class="position-absolute top-50 start-50 translate-middle fs-5 fw-bold">Items</span>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    {{ items }}
+  </span>
+                </div>
+                <div class="bg-white px-4 rounded shadow position-relative" id="roomButton" onclick="">
+                    <span class="position-absolute top-50 start-50 translate-middle fs-5 fw-bold">Rooms</span>
+                    <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">
+    {{ rooms }}
+  </span>
+                </div>
+            </div>
+            <div class="w-100 my-4 d-flex justify-content-around align-items-center">
+                <div class="w-25 my-4 d-flex flex-column justify-content-between align-items-center p-4 bg-white shadow rounded"
+                     id="item1">
+                    <span>{{ most_common }}</span>
+                    <h2 class="fs-5 fw-semibold">Most common</h2>
+                </div>
+                <div class="w-25 my-4 d-flex flex-column justify-content-between align-items-center p-4 bg-white shadow rounded"
+                     id="item2">
+                    <span>{{ lowest_amount }}</span>
+                    <h2 class="fs-5 fw-semibold">Low stock</h2>
+                </div>
+                <div class="w-25 my-4 d-flex flex-column justify-content-between align-items-center p-4 bg-white shadow rounded"
+                     id="item3">
+                    <span>{{ nearest_expiry[0] }}</span>
+                    <span class="fs-6 fw-light text-dark">{{ nearest_expiry[1] }}</span>
+                    <h2 class="fs-5 fw-semibold">Expiring</h2>
+                </div>
+            </div>
+        </div>
 
 
-<div class="profilecontainer">
-    <div class="profilepicture">
-        <img src="../static/assets/face.png" alt="profilepicture">
-    </div>
-    <p class="fs-6 fw-semibold">Welcome Back, {{ current_user.username }}!</p>
+</section>
 
 
-</div>
-<div class="buttoncontainer d-flex flex-row justify-content-around align-items-center">
-    <div class="itembutton" id="itembutton" onclick="">Items</div>
-    <div class="roombutton" id="roombutton" onclick="">Rooms</div>
-</div>
-    <div class="itemcontainer d-flex flex-row justify-content-around align-items-center">
-        <div class="item" id="item1">{{ item }}</div>
-        <div class="item" id="item2">{{ item }}</div>
-        <div class="item" id="item3">{{ item }}</div>
-    </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-  <script>
-      const invContainer = document.getElementById("invContainer");
-      const logoutTexts = document.querySelectorAll(".userControl");
-      const logoutContainer = document.getElementById("logoutContainer");
-
-      invContainer.addEventListener('mouseover', () => {
-        logoutTexts.forEach(icon => {
-            icon.style.display = 'inline';
-        });
-    });
-
-    invContainer.addEventListener('mouseout', () => {
-        logoutTexts.forEach(icon => {
-            icon.style.display = 'none';
-        });
-    });
-
-      logoutContainer.addEventListener('mouseover', () => {
-        logoutTexts.forEach(icon => {
-            icon.style.display = 'inline';
-        });
-    });
-
-    logoutContainer.addEventListener('mouseout', () => {
-        logoutTexts.forEach(icon => {
-            icon.style.display = 'none';
-        });
-    });
-  </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
 </body>
 </html>

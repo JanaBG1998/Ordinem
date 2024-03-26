@@ -182,7 +182,7 @@ def home():
 @app.route("/profile")
 @login_required
 def profil():
-    return render_template("profil.html")
+    return render_template("profil.html", items=getItems())
 
 @app.route("/inventory")
 def inventory():
@@ -194,7 +194,7 @@ def editItem(id):
     item = getItem(id)
     if request.method == 'POST':
         item = request.form['item']
-        room = request.form['room']
+        room = request.form['rooms-datalist']
         amount = request.form['amount']
         price = request.form['price']
         weight = request.form['weight']
@@ -203,11 +203,62 @@ def editItem(id):
 
         conn = sqlite3.connect('instance/inventar.db')
         cursor = conn.cursor()
-        cursor.execute("UPDATE items SET name = ?, amount = ?, price = ?, weight = ?, color = ?, expiry_date = ?, room_id = ? WHERE id = ?", (item, amount, price, weight, color, expiry, item[8], id))
+
+        # get room id
+        cursor.execute(
+            "SELECT rooms.id, rooms.name FROM rooms WHERE rooms.name = ?",
+            (room, ))
+        room_id = cursor.fetchone()[0]
+
+        cursor.execute("UPDATE items SET name = ?, amount = ?, price = ?, weight = ?, color = ?, expiry_date = ?, room_id = ? WHERE id = ?", (item, amount, price, weight, color, expiry, room_id, id))
         conn.commit()
         conn.close()
+        return redirect(url_for('inventory'))
 
     return render_template("edit.html", item=item, rooms=getRooms())
+
+@app.route("/new", methods=('GET', 'POST'))
+def newItem():
+    if request.method == 'POST':
+        item = request.form['item']
+        room = request.form['rooms-datalist']
+        amount = request.form['amount']
+        price = request.form['price']
+        weight = request.form['weight']
+        color = request.form['color']
+        expiry = request.form['expiry']
+
+        conn = sqlite3.connect('instance/inventar.db')
+        cursor = conn.cursor()
+
+        # get room id
+        cursor.execute("SELECT rooms.id, rooms.name FROM rooms WHERE rooms.name = ?", (room, ))
+        room_id = cursor.fetchone()[0]
+        cursor.execute("INSERT INTO items (name, amount, price, weight, color, expiry_date, room_id) VALUES (?, ?, ?, ?, ?, ?, ?)", (item, amount, price, weight, color, expiry, room_id))
+        conn.commit()
+        conn.close()
+        return redirect(url_for('inventory'))
+
+    return render_template("new.html", rooms=getRooms())
+
+@app.route("/new_room", methods=('GET', 'POST'))
+def newRoom():
+    if request.method == 'POST':
+        room = request.form['room']
+
+        conn = sqlite3.connect('instance/inventar.db')
+        cursor = conn.cursor()
+
+        cursor.execute("INSERT INTO rooms (name) VALUES (?)", (room, ))
+        conn.commit()
+        conn.close()
+        return redirect(url_for('inventory'))
+
+    return render_template("new_room.html")
+
+@app.route('/settings')
+def settings():
+    return render_template("settings.html")
 
 if __name__ == '__main__':
     pass

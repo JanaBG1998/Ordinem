@@ -15,9 +15,9 @@
   <a href="/" class="text-white fs-4 px-3 text-decoration-none"></a>
   <div class="d-flex justify-content-between align-items-center flex-grow-3">
     <p class="m-0 px-2">
-      <a class="btn btn-outline-light" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Orte</a>
-      <button class="btn btn-outline-light" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Eigenschaften</button>
-      <button class="btn btn-outline-light" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Anzahl</button>
+      <button class="btn btn-outline-light" onclick="window.location.href='/home'">Back</button>
+      <button class="btn btn-outline-light" onclick="window.location.href='/new'">New</button>
+      <button class="btn btn-outline-light" onclick="window.location.href='/new_room'">New Room</button>
     </p>
   </div>
 </nav>
@@ -29,49 +29,58 @@
   <img id="waveBgBg" src="../static/assets/waveBgBg.svg"/>
 </section>
   <div id="invContainer" class="container rounded bg-white shadow p-5">
-    <div id="roomCarousel" class="carousel carousel-dark slide inline-block" data-bs-ride="carousel">
+    <div class="d-flex justify-content-end align-items-center mb-1">
+      <span class="fs-5 pe-3 text-primary text-decoration-underline">Filter: </span>
+      <button class="btn btn-outline-primary me-1" data-toggle="collapse" aria-expanded="false" aria-controls="multiCollapseExample1">Room</button>
+      <button class="btn btn-outline-primary me-1" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Attributes</button>
+      <button class="btn btn-outline-primary me-1" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Quantity</button>
+    </div>
+<div id="roomCarousel" class="carousel carousel-dark slide inline-block my-4" data-bs-ride="carousel">
   <div class="carousel-inner">
+    {% if rooms|length > 0 %}
     <div class="carousel-item active">
-      {% if rooms|length >= 3 %}
       <div class="card-wrapper container-sm d-flex justify-content-around">
-        {% for i in range(3) %}
+        {% for i in range(0, 3) %}
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title text-center">{{ rooms[i][1] }}</h5>
+              <h5 class="card-title text-center d-flex flex-column justify-content-center align-items-center">{{ rooms[i][1] }}</h5>
             </div>
           </div>
         {% endfor %}
       </div>
     </div>
-    {% if rooms|length >= 6 %}
+    {% endif %}
+
+    {% if rooms|length > 3 %}
     <div class="carousel-item">
-      <div class="card-wrapper container-sm d-flex   justify-content-around">
-        {% for i in range(3, 6) %}
+      <div class="card-wrapper container-sm d-flex justify-content-around">
+        {% for i in range(3, rooms|length) %}
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title text-center">{{ rooms[i][1] }}</h5>
+              <h5 class="card-title text-center d-flex flex-column justify-content-center align-items-center">{{ rooms[i][1] }}</h5>
             </div>
           </div>
         {% endfor %}
+      </div>
+    </div>
+    {% endif %}
 
-    </div>
-    </div>
-    {% if rooms|length >= 9 %}
+    {% if rooms|length > 6 %}
     <div class="carousel-item">
-      <div class="card-wrapper container-sm d-flex  justify-content-around">
-        {% for i in range(6, 9) %}
+      <div class="card-wrapper container-sm d-flex justify-content-around">
+        {% for i in range(6, rooms|length) %}
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title text-center">{{ rooms[i][1] }}</h5>
+              <h5 class="card-title text-center d-flex flex-column justify-content-center align-items-center">{{ rooms[i][1] }}</h5>
             </div>
           </div>
         {% endfor %}
-
+      </div>
     </div>
+    {% endif %}
   </div>
-    {% endif %}
-    {% endif %}
-</div>
+
+  {% if rooms|length > 3 %}
   <button class="carousel-control-prev" type="button" data-bs-target="#roomCarousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
@@ -80,7 +89,13 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
-{% endif %}
+  {% endif %}
+</div>
+
+
+
+    <div class="d-flex justify-content-center align-items-center mb-5">
+      <span class="fw-semibold text-center">Rooms available</span>
     </div>
 
 

@@ -9,7 +9,7 @@ cursor = conn.cursor()
 # Tabelle für Räume erstellen
 cursor.execute('''CREATE TABLE IF NOT EXISTS rooms (
                     id INTEGER PRIMARY KEY,
-                    name TEXT NOT NULL
+                    name TEXT NOT NULL UNIQUE
                 )''')
 
 # Tabelle für Gegenstände erstellen

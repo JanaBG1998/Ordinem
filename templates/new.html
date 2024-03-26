@@ -23,19 +23,12 @@
   <section id="editContainer" class="container rounded p-5 shadow-lg bg-white mb-5">
     <form action="#" method="POST" class="form d-flex flex-column justify-content-center align-items-center"
       id="register-form">
-      <div class="container d-flex justify-content-between align-items-center">
-        <h2 class="form-title">Edit item</h2>
-        <button class="btn btn-outline-danger">Remove</button>
-      </div>
-
-
-
+      <h2 class="form-title">Create item</h2>
       <div class="d-flex justify-content-evenly align-items-center w-100 p-5">
         <div class="d-flex flex-column justify-content-start align-items-start">
           <div class="form-group m-4 d-flex">
             <label for="rooms-datalist"><img src="../static/assets/solid/warehouse.svg" width="15px"></label>
-            <input type="text" class="form-control mx-2" name="rooms-datalist" placeholder="Location" list="list-rooms" id="rooms-datalist"
-              value="{{ item[7] }}">
+            <input type="text" class="form-control mx-2" placeholder="Location" list="list-rooms" id="rooms-datalist" name="rooms-datalist">
             <datalist id="list-rooms">
               {% for i in range(rooms|length) %}
               <option>{{ rooms[i][1] }}</option>
@@ -44,40 +37,33 @@
           </div>
           <div class="form-group m-4">
             <label for="item" class="mx-1"><img src="../static/assets/solid/box.svg" width="15px"></label>
-            <input type="text" name="item" id="item" class="p-1 border-0 border-bottom" placeholder="Item name"
-              value="{{ item[1] }}" />
+            <input type="text" name="item" id="item" class="p-1 border-0 border-bottom" placeholder="Item name"/>
           </div>
           <div class="form-group m-4">
             <label for="amount" class="mx-1"><img src="../static/assets/solid/2.svg" width="15px"></label>
-            <input type="text" name="amount" id="amount" class="p-1 border-0 border-bottom" placeholder="Quantity"
-              value="{{ item[2] }}" />
+            <input type="text" name="amount" id="amount" class="p-1 border-0 border-bottom" placeholder="Quantity"/>
           </div>
           <div class="form-group m-4">
             <label for="weight" class="mx-1"><img src="../static/assets/solid/weight-hanging.svg" width="15px"></label>
-            <input type="text" name="weight" id="weight" class="p-1 border-0 border-bottom" placeholder="Product weight"
-              value="{{ item[4] }}" />
+            <input type="text" name="weight" id="weight" class="p-1 border-0 border-bottom" placeholder="Product weight"/>
           </div>
         </div>
         <div class="d-flex flex-column justify-content-start align-items-start">
           <div class="form-group m-4">
             <label for="color" class="mx-1"><img src="../static/assets/solid/palette.svg" width="15px"></label>
-            <input type="text" name="color" id="color" class="p-1 border-0 border-bottom" placeholder="Color"
-              value="{{ item[5] }}" />
+            <input type="text" name="color" id="color" class="p-1 border-0 border-bottom" placeholder="Color"/>
           </div>
           <div class="form-group m-4">
             <label for="price" class="mx-1"><img src="../static/assets/solid/dollar-sign.svg" width="15px"></label>
-            <input type="text" name="price" id="price" class="p-1 border-0 border-bottom" placeholder="Price"
-              value="{{ item[3] }}" />
+            <input type="text" name="price" id="price" class="p-1 border-0 border-bottom" placeholder="Price"/>
           </div>
           <div class="form-group m-4">
             <label for="expiry" class="mx-1"><img src="../static/assets/solid/calendar-days.svg" width="15px"></label>
-            <input type="date" name="expiry" id="expiry" class="p-1 border-0 border-bottom" placeholder="Expiry"
-              value="{{ item[6] }}" />
+            <input type="date" name="expiry" id="expiry" class="p-1 border-0 border-bottom" placeholder="Expiry"/>
           </div>
           <div class="form-group m-4">
             <label for="code" class="mx-1"><img src="../static/assets/solid/barcode.svg" width="15px"></label>
-            <input type="file" name="code" id="code" class="p-1 border-0 border-bottom" placeholder="Barcode"
-              value="{{ request.form['code'] }}" />
+            <input type="file" name="code" id="code" class="p-1 border-0 border-bottom" placeholder="Barcode"/>
           </div>
         </div>
       </div>
